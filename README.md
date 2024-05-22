@@ -5,6 +5,4 @@
 * 提供 Postman API
 * [API](https://weekly-node-api-2024.onrender.com/)
 
-版本號：node 20.10.0
-
-指令：`pnpm start`
+版本號：node 20.10.0   指令：`pnpm start`
