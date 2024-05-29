@@ -34,15 +34,22 @@ const posts = {
   },
   async deleteAllPosts(req, res) {
     // 刪除全部貼文
-    const newPosts = await Posts.deleteMany({})
-    successHandle(res, newPosts)
+    try {
+      // 判斷路由是否為 /posts/ ，避免前端錯誤操作導致刪除所有資料
+      if (req.originalUrl.endsWith('/posts/') ) throw new Error('缺少貼文 ID');
+
+      const newPosts = await Posts.deleteMany({})
+      successHandle(res, newPosts)
+
+    } catch (error) {
+      errorHandle({ res, error })
+    }
   },
   async deletePosts(req, res) {
     // 刪除一則貼文
     try {
-      const id = req.url.split('/').pop()
-      console.log('id =>', id)
-      console.log('req.params =>', req.params)
+      // const id = req.url.split('/').pop()
+      const id = req.params.id
 
       // 檢查 id 是否是有效的 ObjectId
       if (!mongoose.Types.ObjectId.isValid(id))  throw new Error(`無效的貼文 ID : ${id}`);
@@ -62,7 +69,8 @@ const posts = {
   async editPosts(req, res) {
     // 編輯修改一則貼文
     try {
-      const id = req.url.split('/').pop()
+      // const id = req.url.split('/').pop()
+      const id = req.params.id
 
       // 檢查 id 是否是有效的 ObjectId
       if (!mongoose.Types.ObjectId.isValid(id))  throw new Error(`無效的貼文 ID : ${id}`);
@@ -85,7 +93,8 @@ const posts = {
       }
 
       // Patch 更新貼文成功時，可以在第三個變數帶入 { new: true } 就能取得最新的更新後的資訊。
-      const updatedPost = await Posts.findByIdAndUpdate(id, updateData, { new: true });
+      // 避免必填欄位為空值會被修改成功 參數 => runValidators:true （ 讓 findByIdAndUpdate 也可以跑 Schema 驗證規則 ）
+      const updatedPost = await Posts.findByIdAndUpdate(id, updateData, { new: true, runValidators: true });
       successHandle(res, updatedPost)      
       
     } catch (error) {
