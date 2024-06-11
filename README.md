@@ -3,7 +3,7 @@
 > 將第三週程式碼改使用 加上 swagger 功能
 > [swagger Doc 筆記]('https://hackmd.io/PeU_q14JSEa2zYCZlNi25A?view')
 
-## 主要步驟
+### 主要步驟
 1. 生成一份文件，輸入指令 `npm run swagger`
 2. 啟動 `pnpm run start`
 3. 本地端開啟瀏覽器 => http://localhost:3000/api-doc/
