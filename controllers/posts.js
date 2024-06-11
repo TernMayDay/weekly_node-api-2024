@@ -5,12 +5,62 @@ const Posts = require('../model/posts')
 
 const posts = {
   async getPosts(req, res){
+    /**
+     * #swagger.tags = ['Posts - 貼文']
+     * #swagger.description = '取得全部貼文'
+     * #swagger.responses[200] = {
+        description: 'Some description...',
+        schema: {
+          $ref: "#/definitions/getPosts"
+        }
+      }
+     */
+
     const postData = await Posts.find()
     successHandle(res, postData)
   },
   async createdPosts(req, res){
-    try {
+     /**
+     * #swagger.tags = ['Posts - 貼文']
+     * #swagger.description = '新增一則貼文'
+     * #swagger.parameters['body'] = {
+          in: "body",
+          type: "object",
+          required: true,
+          description: '資料格式',
+          schema: {
+            $name: "keven",
+            $tags: "游泳",
+            $type: "group",
+            image:"https://picsum.photos/id/866/4704/3136",
+            $content: "貼文內容呀-1",
+            likes: 0,
+            comments: 0
+          }
+        }
+     * #swagger.responses[200] = {
+        description: 'Some description...',
+        schema: {
+          status: "success",
+          posts: [
+            {
+              _id: "66569a7e00dce88dcf5a9993",
+              name: "keven",
+              tags: [
+                  "游泳"
+              ],
+              type: "group",
+              image: "https://picsum.photos/id/866/4704/3136",
+              content: "貼文內容呀-2",
+              likes: 0,
+              comments: 0
+            }
+          ]  
+        }
+      }
+     */
 
+    try {
       // const data = JSON.parse(body) 
       const { body: data } = req  // express 套件已經內置 body 處理，故調整為
       const { name, tags, type, image, content } = data
@@ -33,6 +83,12 @@ const posts = {
     } 
   },
   async deleteAllPosts(req, res) {
+     /**
+     * #swagger.tags = ['Posts - 貼文']
+     * #swagger.description = '刪除全部貼文',
+     * #swagger.security = [{ apiKeyAuth: [] }]
+     */
+
     // 刪除全部貼文
     try {
       // 判斷路由是否為 /posts/ ，避免前端錯誤操作導致刪除所有資料
@@ -46,6 +102,11 @@ const posts = {
     }
   },
   async deletePosts(req, res) {
+     /**
+     * #swagger.tags = ['Posts - 貼文']
+     * #swagger.description = '新增一則貼文'
+     */
+
     // 刪除一則貼文
     try {
       // const id = req.url.split('/').pop()
@@ -67,6 +128,11 @@ const posts = {
     }
   },
   async editPosts(req, res) {
+     /**
+     * #swagger.tags = ['Posts - 貼文']
+     * #swagger.description = '修改一則貼文'
+     */
+
     // 編輯修改一則貼文
     try {
       // const id = req.url.split('/').pop()

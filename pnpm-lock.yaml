@@ -35,6 +35,12 @@ importers:
       pug:
         specifier: 2.0.0-beta11
         version: 2.0.0-beta11
+      swagger-autogen:
+        specifier: 2.5.10
+        version: 2.5.10
+      swagger-ui-express:
+        specifier: ^5.0.0
+        version: 5.0.0(express@4.16.4)
 
 packages:
 
@@ -228,6 +234,10 @@ packages:
   escape-html@1.0.3:
     resolution: {integrity: sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==}
 
+  escape-string-regexp@1.0.5:
+    resolution: {integrity: sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg==}
+    engines: {node: '>=0.8.0'}
+
   esutils@2.0.3:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
@@ -239,6 +249,10 @@ packages:
   express@4.16.4:
     resolution: {integrity: sha512-j12Uuyb4FMrd/qQAm6uCHAkPtO8FDTRJZBDd5D2KOL2eLaz1yUNdUB/NOIyq0iU4q4cFarsUCrnFDPBcnksuOg==}
     engines: {node: '>= 0.10.0'}
+
+  figures@3.2.0:
+    resolution: {integrity: sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg==}
+    engines: {node: '>=8'}
 
   finalhandler@1.1.1:
     resolution: {integrity: sha512-Y1GUDo39ez4aHAw7MysnUD5JzYX+WaIj8I57kO3aEPT1fFRL4sr7mjei97FgnwhAyyzRYmQZaTHb2+9uZ1dPtg==}
@@ -568,6 +582,18 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
+  swagger-autogen@2.5.10:
+    resolution: {integrity: sha512-55QuKeG0ZrUp1S5Vk0pEQer5afhW27jRrmvteRnpxD2cOHOFX30YHmvHaP98VHzKlawy2YIDiKP4RoCAiTsDYg==}
+
+  swagger-ui-dist@5.17.14:
+    resolution: {integrity: sha512-CVbSfaLpstV65OnSjbXfVd6Sta3q3F7Cj/yYuvHMp1P90LztOLs6PfUnKEVAeiIVQt9u2SaPwv0LiH/OyMjHRw==}
+
+  swagger-ui-express@5.0.0:
+    resolution: {integrity: sha512-tsU9tODVvhyfkNSvf03E6FAk+z+5cU3lXAzMy6Pv4av2Gt2xA0++fogwC4qo19XuFf6hdxevPuVCSKFuMHJhFA==}
+    engines: {node: '>= v0.10.32'}
+    peerDependencies:
+      express: '>=4.0.0 || >=5.0.0-beta'
+
   to-fast-properties@1.0.3:
     resolution: {integrity: sha512-lxrWP8ejsq+7E3nNjwYmUBMAgjMTZoTI+sdBOpvNyijeDLa29LUn9QaoXAHv4+Z578hbmHHJKZknzxVtvo77og==}
     engines: {node: '>=0.10.0'}
@@ -808,6 +834,8 @@ snapshots:
 
   escape-html@1.0.3: {}
 
+  escape-string-regexp@1.0.5: {}
+
   esutils@2.0.3: {}
 
   etag@1.8.1: {}
@@ -846,6 +874,10 @@ snapshots:
       vary: 1.1.2
     transitivePeerDependencies:
       - supports-color
+
+  figures@3.2.0:
+    dependencies:
+      escape-string-regexp: 1.0.5
 
   finalhandler@1.1.1:
     dependencies:
@@ -1197,6 +1229,17 @@ snapshots:
   statuses@1.5.0: {}
 
   supports-preserve-symlinks-flag@1.0.0: {}
+
+  swagger-autogen@2.5.10:
+    dependencies:
+      figures: 3.2.0
+
+  swagger-ui-dist@5.17.14: {}
+
+  swagger-ui-express@5.0.0(express@4.16.4):
+    dependencies:
+      express: 4.16.4
+      swagger-ui-dist: 5.17.14
 
   to-fast-properties@1.0.3: {}
 
