@@ -1,8 +1,8 @@
-# weekly ![week3 express MVC 架構建立 RESTful API](https://img.shields.io/badge/week3%20%20-%20%20express%20MVC%20%E6%9E%B6%E6%A7%8B%E5%BB%BA%E7%AB%8B%20RESTful%20API%20-8A2Be2?logo=express)
-## 從 express MVC 架構建立 RESTful API
-* 將第二週程式碼改使用 express 格式
-* 將 express 部署到 Render 主機
+# weekly ![week4 期中考：打造全端 (Full Stack) 網站架構](https://img.shields.io/badge/week4%20%20-%20%20%E6%9C%9F%E4%B8%AD%E8%80%83%EF%BC%9A%E6%89%93%E9%80%A0%E5%85%A8%E7%AB%AF%20(Full%20Stack)%20%E7%B6%B2%E7%AB%99%E6%9E%B6%E6%A7%8B%20-8A2Be2?logo=express)
+## 期中考：打造全端 (Full Stack) 網站架構
+* references(引用)：將post(貼文)collection 與 user(使用者)collection 產生關聯
 * 提供 Postman API
 * [API](https://weekly-node-api-2024.onrender.com/)
 
-版本號：node 20.10.0   指令：`pnpm start`
+版本號：node 20.10.0
+指令：`pnpm start`

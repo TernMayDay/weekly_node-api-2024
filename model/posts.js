@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const postsSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, '貼文 姓名 未填寫']
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'user',  // collection名稱，主要依照 model 給的名稱。
+    required: [true, '貼文 ID 未填寫']
   },
   tags: {
     type: [String],
