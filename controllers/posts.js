@@ -5,21 +5,31 @@ const Posts = require('../model/posts')
 
 const posts = {
   async getPosts(req, res){
-    const postData = await Posts.find()
+    // 搜尋 content 的內容
+    const timeSort = req.query.timeSort == "asc" ? "createdAt":"-createdAt"
+    const q = req.query.q !== undefined ? {"content": new RegExp(req.query.q)} : {};
+    // populate 引用
+    const postData = await Posts.find(q).populate({
+      path: 'user',
+      select: 'name photo '
+    }).sort(timeSort);
+    // asc 遞增(由小到大，由舊到新) createdAt ; 
+    // desc 遞減(由大到小、由新到舊) "-createdAt"
+    // [範例]  /posts?timeSort=asc&q=測試
+
     successHandle(res, postData)
   },
   async createdPosts(req, res){
     try {
 
-      // const data = JSON.parse(body) 
       const { body: data } = req  // express 套件已經內置 body 處理，故調整為
-      const { name, tags, type, image, content } = data
+      const { user, tags, type, image, content } = data
       
       if(!content?.trim()) throw new Error('貼文內容不能空白ㄛ~');
       
       const newPosts = await Posts.create(
         {
-          name,
+          user,
           tags,
           type,
           image,
@@ -48,7 +58,6 @@ const posts = {
   async deletePosts(req, res) {
     // 刪除一則貼文
     try {
-      // const id = req.url.split('/').pop()
       const id = req.params.id
 
       // 檢查 id 是否是有效的 ObjectId
@@ -69,7 +78,6 @@ const posts = {
   async editPosts(req, res) {
     // 編輯修改一則貼文
     try {
-      // const id = req.url.split('/').pop()
       const id = req.params.id
 
       // 檢查 id 是否是有效的 ObjectId
@@ -81,11 +89,11 @@ const posts = {
       
       // const data = JSON.parse(body) 
       const { body: data } = req  // express 套件已經內置 body 處理，故調整為
-      const { name, tags, type, image, content } = data
+      const { user, tags, type, image, content } = data
       if( !content?.trim()) throw new Error('貼文內容不能空白ㄛ~');
       
       const updateData = {
-        name,
+        user,
         tags,
         type,
         image,
