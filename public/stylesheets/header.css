@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&family=Paytone+One&display=swap');
+
 body {
   background-color: #EFECE7;
   background-image: linear-gradient(90deg, rgba(112, 112, 112, .3) 1%, transparent 0), linear-gradient(rgba(112, 112, 112, .3) 1%, transparent 0);
@@ -10,3 +12,16 @@ header {
   opacity: 1;
 }
 
+.navbar {
+  width: 900px;
+  text-align: center;
+}
+
+.logo a{
+  text-decoration: none;
+  font-family: Paytone One, sans-serif;
+  font-size: 26px;
+  letter-spacing: 0px;
+  color: #000400;
+  opacity: 1;
+}
